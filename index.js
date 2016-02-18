@@ -1,6 +1,6 @@
 var http = require('http');
 var express = require('express');
-var bluebird = require('bluebird');
+
 var app = express();
 var server = http.createServer(app);
 var port = 8001;
@@ -8,9 +8,9 @@ var port = 8001;
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var errors = require('./lib/common/errors');
-
 var v1Routes = require('./lib/routes/v1');
 
+// Middleware
 app.use(logger('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
