@@ -18,12 +18,7 @@ app.use(bodyParser.json());
 app.use('/v1', v1Routes);
 
 // Catch all undefined routes and return a 404
-app.use(function(req, res) {
-  res
-    .status(404)
-    .set('Content-Type', 'text/html')
-    .send(errors.errorHtmlResponse(404));
-});
+app.use(errors.respond.bind(this, 404));
 
 server.listen(port, function () {
   console.log('Server listening on port %d', port);
